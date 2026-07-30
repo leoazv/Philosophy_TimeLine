@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOPHIA | A Linha do Tempo da Filosofia</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Scroll Progress Indicator Bar -->
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-subtitle">DA MITOLOGIA À ERA DIGITAL</span>
+            <h1 class="hero-title">A Jornada da Razão</h1>
+            <p class="hero-description">Uma exploração cronológica das grandes ideias, pensadores e reflexões que moldaram a consciência humana.</p>
+            <a href="#timeline" class="btn-explore">Iniciar Navegação ↓</a>
+        </div>
+    </header>
+
+    <!-- Floating Era Navigation -->
+    <nav class="era-nav" id="eraNav">
+        <button class="era-btn active" data-target="mito">Mito & Pré-Socráticos</button>
+        <button class="era-btn" data-target="classica">Clássica</button>
+        <button class="era-btn" data-target="helenistica">Helenística</button>
+        <button class="era-btn" data-target="medieval">Medieval</button>
+        <button class="era-btn" data-target="moderna">Moderna</button>
+        <button class="era-btn" data-target="contemporanea">Contemporânea</button>
+    </nav>
+
+    <!-- Main Timeline Section -->
+    <main class="timeline-container" id="timeline">
+        <!-- Central Glow Progress Line -->
+        <div class="timeline-line">
+            <div class="timeline-line-progress" id="lineProgress"></div>
+        </div>
+
+        <!-- ERA 1: Mito ao Logos & Pré-Socráticos -->
+        <section class="timeline-item" id="mito" data-era="Mito & Pré-Socráticos">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <span class="era-tag">séc. VIII a.C. — séc. V a.C.</span>
+                <h2>Do Mito ao Logos & Os Pré-Socráticos</h2>
+                <p class="era-summary">Transição do pensamento mítico-narrativo para a investigação racional da natureza (Physis) e a busca pelo princípio fundamental (Arché).</p>
+                
+                <div class="card-grid">
+                    <div class="philosophical-card">
+                        <h3>Tales de Mileto</h3>
+                        <span class="dates">c. 624 – 546 a.C.</span>
+                        <div class="concept-badge">A água como Arché</div>
+                        <p>Considerado o primeiro filósofo. Afirmava que todas as coisas derivam da água e do elemento úmido.</p>
+                        <small><strong>Conceitos:</strong> Cosmologia, Monismo, Matéria Viva.</small>
+                    </div>
+                    <div class="philosophical-card">
+                        <h3>Heráclito & Parmênides</h3>
+                        <span class="dates">séc. VI – V a.C.</span>
+                        <div class="concept-badge">O Devir vs. O Ser Permanente</div>
+                        <p>Heráclito propõe o fluxo constante ("Tudo flui"). Parmênides defende a imutabilidade absoluta do Ser.</p>
+                        <small><strong>Obras:</strong> Fragmentos Conservados.</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ERA 2: Filosofia Clássica -->
+        <section class="timeline-item" id="classica" data-era="Clássica">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <span class="era-tag">séc. V a.C. — séc. IV a.C.</span>
+                <h2>A Apogeu da Filosofia Clássica Ateniense</h2>
+                <p class="era-summary">O foco se desloca da natureza para a ética, a política, a metafísica e a busca pela essência da verdade e da justiça na Pólis.</p>
+                
+                <div class="card-grid">
+                    <div class="philosophical-card highlight">
+                        <h3>Sócrates</h3>
+                        <span class="dates">470 – 399 a.C.</span>
+                        <div class="concept-badge">Maiêutica & "Conhece-te a ti mesmo"</div>
+                        <p>Inaugura a filosofia moral. Utilizava o diálogo irônico para partejar ideias e demonstrar a própria ignorância.</p>
+                        <small><strong>Método:</strong> Dialética Socrática.</small>
+                    </div>
+                    <div class="philosophical-card">
+                        <h3>Platão</h3>
+                        <span class="dates">428 – 348 a.C.</span>
+                        <div class="concept-badge">Teoria das Formas (Ideias)</div>
+                        <p>Distingue o mundo sensível (ilusório) do mundo inteligível (das ideias perfeitas e eternas).</p>
+                        <small><strong>Obras:</strong> <em>A República</em>, <em>O Banquete</em>, <em>Fédon</em>.</small>
+                    </div>
+                    <div class="philosophical-card">
+                        <h3>Aristóteles</h3>
+                        <span class="dates">384 – 322 a.C.</span>
+                        <div class="concept-badge">Eudaimonia & Lógica Formal</div>
+                        <p>Sistematizou as ciências. Defendia que a felicidade é a realização plena da função racional humana.</p>
+                        <small><strong>Obras:</strong> <em>Ética a Nicômaco</em>, <em>Metafísica</em>, <em>Organon</em>.</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ERA 3: Filosofia Helenística e Romana -->
+        <section class="timeline-item" id="helenistica" data-era="Helenística">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <span class="era-tag">séc. IV a.C. — séc. VI d.C.</span>
+                <h2>Filosofia Helenística e Imperial Romana</h2>
+                <p class="era-summary">Período de incerteza política. A filosofia torna-se uma "arte de viver" centrada na paz de espírito e serenidade interior.</p>
+                
+                <div class="card-grid">
+                    <div class="philosophical-card">
+                        <h3>Epicuro de Samos</h3>
+                        <span class="dates">341 – 270 a.C.</span>
+                        <div class="concept-badge">Ataraxia & Prazer Moderado</div>
+                        <p>Busca da tranquilidade da alma através do cultivo do prazer intelectual e ausência de dor (aponía).</p>
+                        <small><strong>Obra:</strong> <em>Carta sobre a Felicidade</em>.</small>
+                    </div>
+                    <div class="philosophical-card">
+                        <h3>Sêneca & Marco Aurélio</h3>
+                        <span class="dates">séc. I – II d.C.</span>
+                        <div class="concept-badge">Estoicismo & Amor Fati</div>
+                        <p>Resiliência diante das intempéries da vida, distinção entre o que podemos e não podemos controlar.</p>
+                        <small><strong>Obras:</strong> <em>Meditações</em>, <em>Cartas a Lucílio</em>.</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ERA 4: Filosofia Medieval -->
+        <section class="timeline-item" id="medieval" data-era="Medieval">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <span class="era-tag">séc. IV — séc. XIV</span>
+                <h2>Filosofia Medieval: Patrística e Escolástica</h2>
+                <p class="era-summary">Síntese profunda entre a filosofia grega (Platão e Aristóteles) e a revelação teológica cristã e islâmica.</p>
+                
+                <div class="card-grid">
+                    <div class="philosophical-card">
+                        <h3>Santo Agostinho</h3>
+                        <span class="dates">354 – 430 d.C.</span>
+                        <div class="concept-badge">Teoria da Iluminação & Neoplatonismo</div>
+                        <p>Harmonizou Platão com o cristianismo. Propôs a busca interior da verdade através do amor divino.</p>
+                        <small><strong>Obras:</strong> <em>Confissões</em>, <em>A Cidade de Deus</em>.</small>
+                    </div>
+                    <div class="philosophical-card">
+                        <h3>Santo Tomás de Aquino</h3>
+                        <span class="dates">1225 – 1274</span>
+                        <div class="concept-badge">As Cinco Vias & Aristotelianismo</div>
+                        <p>Apogeu da Escolástica. Demonstra a compatibilidade fundamental entre a Razão e a Fé.</p>
+                        <small><strong>Obra:</strong> <em>Suma Teológica</em>.</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ERA 5: Filosofia Moderna -->
+        <section class="timeline-item" id="moderna" data-era="Moderna">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <span class="era-tag">séc. XVI — séc. XVIII</span>
+                <h2>Filosofia Moderna & O Iluminismo</h2>
+                <p class="era-summary">Revolução científica, emancipação do sujeito cognoscente, debate entre Racionalismo, Empirismo e o surgimento do Contrato Social.</p>
+                
+                <div class="card-grid">
+                    <div class="philosophical-card">
+                        <h3>René Descartes</h3>
+                        <span class="dates">1596 – 1650</span>
+                        <div class="concept-badge">Cogito, ergo sum & Dualismo</div>
+                        <p>Pai do Racionalismo Moderno. Utiliza a dúvida metódica para encontrar a certeza incontestável do Eu pensante.</p>
+                        <small><strong>Obras:</strong> <em>Discurso do Método</em>, <em>Meditações Metafísicas</em>.</small>
+                    </div>
+                    <div class="philosophical-card">
+                        <h3>John Locke & Spinoza</h3>
+                        <span class="dates">séc. XVII</span>
+                        <div class="concept-badge">Empirismo & Monismo Panteísta</div>
+                        <p>Locke defende a mente como "Tabula Rasa". Spinoza identifica Deus e a Natureza como uma única substância.</p>
+                        <small><strong>Obras:</strong> <em>Ensaio acerca do Entendimento Humano</em>, <em>Ética</em>.</small>
+                    </div>
+                    <div class="philosophical-card highlight">
+                        <h3>Immanuel Kant</h3>
+                        <span class="dates">1724 – 1804</span>
+                        <div class="concept-badge">Revolução Copernicana da Filosofia</div>
+                        <p>Sintetizou o Racionalismo e Empirismo no Criticismo. Formula o Imperativo Categórico na Ética.</p>
+                        <small><strong>Obras:</strong> <em>Crítica da Razão Pura</em>, <em>Crítica da Razão Prática</em>.</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ERA 6: Filosofia Contemporânea -->
+        <section class="timeline-item" id="contemporanea" data-era="Contemporânea">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <span class="era-tag">séc. XIX — Hoje</span>
+                <h2>Filosofia Contemporânea & Pós-Moderna</h2>
+                <p class="era-summary">Crítica às metanarrativas da modernidade, crise do sujeito, Existencialismo, Teoria Crítica, Biopolítica e a era da hiperinformação.</p>
+                
+                <div class="card-grid">
+                    <div class="philosophical-card">
+                        <h3>Friedrich Nietzsche</h3>
+                        <span class="dates">1844 – 1900</span>
+                        <div class="concept-badge">Vontade de Potência & Amor Fati</div>
+                        <p>Crítico feroz do niilismo e da moral ocidental. Clama pela superação do homem e celebração da vida.</p>
+                        <small><strong>Obras:</strong> <em>Assim Falou Zaratustra</em>, <em>Genealogia da Moral</em>.</small>
+                    </div>
+                    <div class="philosophical-card">
+                        <h3>Jean-Paul Sartre & Heidegger</h3>
+                        <span class="dates">séc. XX</span>
+                        <div class="concept-badge">Existencialismo & Dasein</div>
+                        <p>"A existência precede a essência". O ser humano está condenado a ser livre e construir o seu próprio sentido.</p>
+                        <small><strong>Obras:</strong> <em>O Ser e o Nada</em>, <em>Ser e Tempo</em>.</small>
+                    </div>
+                    <div class="philosophical-card">
+                        <h3>Michel Foucault & Byung-Chul Han</h3>
+                        <span class="dates">séc. XX — XXI</span>
+                        <div class="concept-badge">Biopolítica & Sociedade do Cansaço</div>
+                        <p>Análise das redes invisíveis de poder, controle, vigilância digital e os impactos ético-psicológicos do hiperconsumo.</p>
+                        <small><strong>Obras:</strong> <em>Vigiar e Punir</em>, <em>Sociedade do Cansaço</em>.</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="site-footer">
+        <p>"A vida não examinada não vale a pena ser vivida." — Sócrates</p>
+        <small>© SOPHIA Timeline — Curadoria de História da Filosofia</small>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
