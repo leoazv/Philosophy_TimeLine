@@ -1,10 +1,18 @@
-/* Reset e Variáveis */
+/* ==========================================================================
+   1. RESET E VARIÁVEIS GERAIS
+   ========================================================================== */
 :root {
-    --bg-color: #0f1115; /* Tom escuro e sóbrio */
+    /* Paleta de Cores - Tema Escuro Sóbrio */
+    --bg-color: #0c0e12; 
+    --card-bg: rgba(20, 22, 28, 0.65);
+    --card-bg-eminent: rgba(25, 27, 33, 0.85);
+    
     --text-primary: #f0f0f0;
     --text-secondary: #a1a1aa;
-    --accent: #d4af37; /* Dourado acadêmico sutil */
+    --accent: #d4af37; /* Dourado acadêmico */
+    --accent-glow: rgba(212, 175, 55, 0.15);
     
+    /* Tipografia */
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Inter', sans-serif;
 }
@@ -21,9 +29,12 @@ body {
     font-family: var(--font-body);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* Fundo Gerativo do p5.js */
+/* ==========================================================================
+   2. FUNDO GERATIVO (p5.js)
+   ========================================================================== */
 #canvas-container {
     position: fixed;
     top: 0;
@@ -31,10 +42,12 @@ body {
     width: 100vw;
     height: 100vh;
     z-index: -1; /* Mantém atrás de todo o conteúdo */
-    pointer-events: none; /* Permite interagir com o site sem o canvas bloquear */
+    pointer-events: none; /* Não bloqueia interações de clique e scroll */
 }
 
-/* Seção Hero */
+/* ==========================================================================
+   3. SEÇÃO HERO (Capa)
+   ========================================================================== */
 .hero {
     height: 100vh;
     display: flex;
@@ -43,24 +56,33 @@ body {
     align-items: center;
     text-align: center;
     position: relative;
+    padding: 0 5vw;
+}
+
+.hero-content {
+    z-index: 1;
 }
 
 .hero h1 {
     font-family: var(--font-heading);
-    font-size: clamp(3rem, 6vw, 6rem);
+    /* clamp() torna a fonte fluida, ajustando-se do celular ao desktop */
+    font-size: clamp(3rem, 6vw, 6.5rem); 
     font-weight: 700;
     letter-spacing: -0.02em;
     margin-bottom: 1rem;
+    line-height: 1.1;
 }
 
 .hero .subtitle {
     font-size: clamp(1.1rem, 2vw, 1.5rem);
     color: var(--text-secondary);
     font-weight: 300;
-    max-width: 600px;
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.5;
 }
 
-/* Indicador de Scroll */
+/* Indicador de rolagem animado */
 .scroll-indicator {
     position: absolute;
     bottom: 50px;
@@ -69,16 +91,181 @@ body {
     align-items: center;
     gap: 10px;
     opacity: 0.7;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .scroll-indicator span {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.2em;
+    color: var(--text-secondary);
 }
 
 .scroll-indicator .line {
     width: 1px;
     height: 50px;
-    background: linear-gradient(to bottom, var(--text-primary), transparent);
+    background: linear-gradient(to bottom, var(--text-secondary), transparent);
+}
+
+/* ==========================================================================
+   4. LINHA DO TEMPO E PERÍODOS
+   ========================================================================== */
+#timeline-container {
+    position: relative;
+    padding: 100px 5vw 150px;
+    max-width: 1400px;
+    margin: 0 auto;
+    z-index: 1; 
+}
+
+.timeline-period {
+    margin-bottom: 8rem;
+}
+
+.period-header {
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+.period-header h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.period-header .timeframe {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   5. GRADE DE FILÓSOFOS (Cards)
+   ========================================================================== */
+.philosophers-grid {
+    display: grid;
+    /* Cria colunas flexíveis: no mínimo 320px, preenchendo o espaço disponível */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+/* Estilo Base do Cartão (Glassmorphism) */
+.philosopher-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 2.5rem;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+    
+    /* Configurações iniciais para o GSAP animar */
+    opacity: 0; 
+    transform: translateY(50px);
+    
+    /* Permite que o parallax interno (card-content) funcione corretamente */
+    overflow: hidden; 
+}
+
+/* Efeito de Hover sutil */
+.philosopher-card:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Estrutura Interna do Cartão */
+.card-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.philosopher-card h3 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+.philosopher-card .metadata {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+}
+
+.philosopher-card .summary {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    flex-grow: 1; /* Empurra os conceitos para a base do cartão */
+}
+
+/* Tags de Conceitos */
+.philosopher-card .concepts {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.philosopher-card .concepts li {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    color: var(--text-primary);
+    transition: background 0.3s ease;
+}
+
+.philosopher-card .concepts li:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* ==========================================================================
+   6. DESTAQUE VISUAL (Filósofos Eminentes)
+   ========================================================================== */
+.philosopher-card.eminent {
+    grid-column: span 2; /* Ocupa duas colunas no layout Desktop */
+    background: var(--card-bg-eminent);
+    border-color: rgba(212, 175, 55, 0.2); /* Borda com tom dourado */
+    box-shadow: 0 0 40px var(--accent-glow);
+}
+
+.philosopher-card.eminent h3 {
+    font-size: 2.6rem;
+}
+
+.philosopher-card.eminent .summary {
+    font-size: 1.15rem;
+}
+
+/* ==========================================================================
+   7. RESPONSIVIDADE (Tablets e Celulares)
+   ========================================================================== */
+@media (max-width: 900px) {
+    .philosophers-grid {
+        grid-template-columns: 1fr; /* Força uma coluna só em telas menores */
+    }
+    
+    .philosopher-card.eminent {
+        grid-column: span 1; /* Retira a largura estendida em telas pequenas */
+    }
+    
+    .period-header h2 {
+        font-size: 2.2rem;
+    }
+    
+    .philosopher-card {
+        padding: 1.8rem;
+    }
 }
