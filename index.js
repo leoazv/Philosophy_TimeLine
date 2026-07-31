@@ -1,39 +1,78 @@
-document.addEventListener("DOMContentLoaded", () => {
+let nodes = [];
+const numNodes = 80; // Quantidade ajustada para performance
+const connectionDistance = 150;
+
+function setup() {
+    let canvas = createCanvas(windowWidth, windowHeight);
+    canvas.parent('canvas-container'); // Injeta o canvas na div correta
     
-    // 1. Lógica da Barra de Progresso de Scroll
-    const progressBar = document.querySelector('.scroll-progress');
+    // Inicializa os nós (ideias/conceitos)
+    for (let i = 0; i < numNodes; i++) {
+        nodes.push(new Node());
+    }
+}
+
+function draw() {
+    clear(); // Fundo transparente para o CSS gerenciar a cor
     
-    window.addEventListener('scroll', () => {
-        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrollPercentage = (scrollTop / scrollHeight) * 100;
+    // Atualiza e desenha as conexões primeiro (ficam no fundo)
+    for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+            nodes[i].connect(nodes[j]);
+        }
+    }
+    
+    // Atualiza e desenha os nós (partículas)
+    for (let node of nodes) {
+        node.update();
+        node.display();
+    }
+}
+
+// Redimensionamento responsivo
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+}
+
+// Classe que define cada partícula de pensamento
+class Node {
+    constructor() {
+        this.pos = createVector(random(width), random(height));
+        this.vel = createVector(random(-0.5, 0.5), random(-0.5, 0.5));
+        this.size = random(2, 4);
+    }
+    
+    update() {
+        this.pos.add(this.vel);
         
-        progressBar.style.width = scrollPercentage + '%';
-    });
-
-    // 2. Lógica do Dynamic Scroll (Intersection Observer)
-    const timelineItems = document.querySelectorAll('.timeline-item');
-
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px 0px -100px 0px', // Aciona um pouco antes do final da tela
-        threshold: 0.2 // 20% do elemento deve estar visível
-    };
-
-    const timelineObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Adiciona a classe que inicia a animação CSS
-                entry.target.classList.add('visible');
-                
-                // Para de observar após a animação acontecer uma vez (opcional)
-                // Se quiser que anime toda vez que rolar para cima/baixo, remova a linha abaixo
-                observer.unobserve(entry.target);
+        // Rebote suave nas bordas
+        if (this.pos.x < 0 || this.pos.x > width) this.vel.x *= -1;
+        if (this.pos.y < 0 || this.pos.y > height) this.vel.y *= -1;
+    }
+    
+    display() {
+        noStroke();
+        fill(255, 255, 255, 100);
+        circle(this.pos.x, this.pos.y, this.size);
+    }
+    
+    connect(otherNode) {
+        let d = dist(this.pos.x, this.pos.y, otherNode.pos.x, otherNode.pos.y);
+        
+        // Conexão entre nós próximos
+        if (d < connectionDistance) {
+            // A força da conexão aumenta se o mouse estiver próximo (representando a intenção/foco)
+            let mouseDist = dist(mouseX, mouseY, this.pos.x, this.pos.y);
+            let alpha = map(d, 0, connectionDistance, 100, 0);
+            
+            // Intensifica a linha se o mouse estiver perto da rede
+            if (mouseDist < 200) {
+                alpha += map(mouseDist, 0, 200, 100, 0);
             }
-        });
-    }, observerOptions);
-
-    timelineItems.forEach(item => {
-        timelineObserver.observe(item);
-    });
-});
+            
+            stroke(255, 255, 255, alpha);
+            strokeWeight(0.5);
+            line(this.pos.x, this.pos.y, otherNode.pos.x, otherNode.pos.y);
+        }
+    }
+}
