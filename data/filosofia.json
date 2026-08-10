@@ -1,0 +1,58 @@
+{
+  "timeline": [
+    {
+      "id": "antiga",
+      "period_name": "Filosofia Antiga",
+      "timeframe": "Séc. VI a.C. – Séc. V d.C.",
+      "philosophers": [
+        {
+          "name": "Sócrates",
+          "lifespan": "470 a.C. – 399 a.C.",
+          "school": "Clássica Graça",
+          "summary": "Pai da filosofia ocidental moral, focado no autoconhecimento e na busca pela verdade através do diálogo crítico e do questionamento sistemático.",
+          "is_eminent": true,
+          "core_concepts": ["Método Socrático", "Maiêutica", "Ética", "Autoconhecimento"]
+        },
+        {
+          "name": "Platão",
+          "lifespan": "428 a.C. – 348 a.C.",
+          "school": "Academia de Atenas",
+          "summary": "Discípulo de Sócrates, desenvolveu a teoria das formas e idealizou uma sociedade justa governada pela razão e pelos filósofos.",
+          "is_eminent": false,
+          "core_concepts": ["Teoria das Formas", "Mito da Caverna", "Dualismo"]
+        },
+        {
+          "name": "Aristóteles",
+          "lifespan": "384 a.C. – 322 a.C.",
+          "school": "Liceu",
+          "summary": "Estudou sob Platão, mas focou na observação empírica, na lógica formal e na busca pela virtude como caminho para a felicidade.",
+          "is_eminent": true,
+          "core_concepts": ["Lógica Formal", "Empirismo", "Eudaimonia", "Metafísica"]
+        }
+      ]
+    },
+    {
+      "id": "moderna",
+      "period_name": "Filosofia Moderna",
+      "timeframe": "Séc. XVII – Séc. XIX",
+      "philosophers": [
+        {
+          "name": "René Descartes",
+          "lifespan": "1596 – 1650",
+          "school": "Racionalismo",
+          "summary": "Procurou estabelecer bases inabaláveis para o conhecimento humano através da dúvida metódica e da razão.",
+          "is_eminent": true,
+          "core_concepts": ["Cogito, ergo sum", "Dúvida Metódica", "Dualismo Mente-Corpo"]
+        },
+        {
+          "name": "Immanuel Kant",
+          "lifespan": "1724 – 1804",
+          "school": "Iluminismo / Idealismo",
+          "summary": "Sintetizou o racionalismo e o empirismo, propondo que construímos nossa experiência da realidade através de estruturas mentais.",
+          "is_eminent": false,
+          "core_concepts": ["Imperativo Categórico", "Idealismo Transcendental", "Autonomia"]
+        }
+      ]
+    }
+  ]
+}
